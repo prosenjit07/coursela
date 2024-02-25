@@ -55,12 +55,12 @@
 }
 
 .courses_card h3{
-    color: #6aaf15;
+    color: #1815af;
 }
 
 .courses_card p {
     margin:  0;
-    color: yellow;
+    color: rgb(20, 120, 53);
 }
 
 .courses_card a {
