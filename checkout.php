@@ -17,7 +17,7 @@ $post_data['emi_max_inst_option'] = "9";
 $post_data['emi_selected_inst'] = "9";
 
 # CUSTOMER INFORMATION
-$post_data['cus_name'] = "Customer";
+$post_data['cus_name'] = $_GET["stu_name"];
 $post_data['cus_email'] = "test@test.com";
 $post_data['cus_add1'] = "Dhaka";
 $post_data['cus_add2'] = "Dhaka";

@@ -27,17 +27,15 @@
                 }
             }
             else
-            $err_message="<p style='text-align:center weight:bold' class='text-danger'>
-            ✅ওডার করতে 01827543485 Bkash Number এ Send Money করুন।</p>
-            <p>পেমেন্ট successful হলে কোর্সগুলো মেইলে দেয়া হবে। ধন্যবাদ ❤️, <a href='../courses.php'>Buy ANOTHER</a></p>
-            <p>✅অর্ডার  রিলেটেড  সমস্যা  হলে <a href=\"https://t.me/contractadmin24\">ক্লিক করুন।</a></p>";
+            $err_message="<p>✅Currently, Demo is not uploaded.</p> 
+             <p>✅পেমেন্ট successful হলে কোর্সগুলো মেইলে দেয়া হবে। ধন্যবাদ ❤️, <a href='../courses.php'>Buy Another Courses</a></p>
+            <p>✅অর্ডার রিলেটেড সমস্যা হলে <a href=\"https://t.me/contractadmin24\">ক্লিক করুন।</a></p>";
         }
     }
     if($err)
     {
         echo $err_message;
         goto footer;
-
     }
         
 ?>

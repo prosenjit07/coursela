@@ -25,7 +25,106 @@ require './db.php';
 
 <body>
     <?php require './header.php'; ?>
+    <style>
 
+/* Adjustments for smaller screens */
+@media (min-width: 769px) {
+    .courses_card {
+        width: calc(33.33% - 20px); /* Adjust width for larger screens */
+        /* You may need to adjust the percentage based on your layout */
+    }
+}
+
+/* Additional adjustments for even smaller screens */
+@media (max-width: 480px) {
+    .courses_card {
+        width: 100%; /* Adjust width for smaller screens */
+        max-width: none; /* Remove the maximum width */
+    }
+}
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .courses_container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .courses_card {
+            width: 300px;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .courses_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f9f9f9;
+            /* Adjust the color as needed */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #333;
+        }
+
+        p {
+            color: #0C090A;
+        }
+
+        .enroll a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FA2A55;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .enroll a:hover {
+            background-color: #0056b3;
+        }
+
+        .courses_card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            /* A different color for the button */
+            color: #fff;
+            /* White text color */
+            border: none;
+            border-radius: 5px;
+            /* Rounded corners */
+            text-decoration: none;
+            /* Remove underline */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for hover effect */
+        }
+
+        .courses_card a:hover {
+            background-color: #0056b3;
+            /* Change background color on hover */
+        }
+    </style>
     <section class="hero">
         <div class="container hero-content_container">
             <div class="hero-content">
@@ -114,12 +213,12 @@ require './db.php';
             <div class="stay_updated">
                 <h2>Stay Updated</h2>
                 <div class="social">
-                    <span class="s_icons"><a href="https://www.facebook.com/courselabd" ><img
+                    <span class="s_icons"><a href="https://www.facebook.com/courselabd"><img
                                 src="./images/icons/facebook.svg" alt="Facebook"></a></span>
-                    <span class="s_icons"><a href="https://t.me/courselabd" ><img
-                                src="./images/icons/telegram.svg" alt="Telegram"></a></span>
-                    <span class="s_icons"><a href="#"><img
-                                src="./images/icons/instagram.svg" alt="Instagram"></a></span>
+                    <span class="s_icons"><a href="https://t.me/courselabd"><img src="./images/icons/telegram.svg"
+                                alt="Telegram"></a></span>
+                    <span class="s_icons"><a href="#"><img src="./images/icons/instagram.svg"
+                                alt="Instagram"></a></span>
 
                 </div>
             </div>

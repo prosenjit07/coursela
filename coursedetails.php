@@ -48,7 +48,8 @@ else
         table th {
             background-color: cyan;
         }
-        #close{
+
+        #close {
             font-size: 2em;
         }
 
@@ -88,14 +89,10 @@ else
             $info = "";
 
             if (isset($_GET['enroll'])) {
-                if ($_GET['enroll'] !== $_GET['id'])
-                {
+                if ($_GET['enroll'] !== $_GET['id']) {
                     echo "<span class='text-danger'>AN ERROR OCCURED :(</span>";
                     goto footer;
-                }
-                    
-
-                else {
+                } else {
                     if (isset($_SESSION['stu'])) {
                         $c_id = $_GET['id'];
                         $s_id = $_SESSION['stu']['stu_id'];
@@ -103,14 +100,13 @@ else
                         $result = $conn->query("SELECT enroll_date FROM course_enroll WHERE course_id=$c_id AND stu_id=$s_id");
 
                         if ($result->num_rows == 1)
-                            $info = "<b class='text-info'>you alreay taken this course on " . $result->fetch_assoc()['enroll_date'] . " <a href='./student/watchcourse.php?id=" . $c_id . "'>Watch Now</a></b>";
-
+                            $info = "<b class='text-info'>you alreay enroll this course on " . $result->fetch_assoc()['enroll_date'] . " <a href='./student/watchcourse.php?id=" . $c_id . " '>Watch Now</a></b>";
                         else {
                             $date = date("Y-m-d");
                             $sql = "INSERT INTO course_enroll(enroll_date,course_id,stu_id) VALUES('$date',$c_id,$s_id)";
 
                             if ($conn->query($sql))
-                                $info = "<b class='text-success'>course added successfully <a href='./student/watchcourse.php?id=" . $c_id . "'>Watch Now</a></b>";
+                                $info = "<b class='text-success'>Enroll Successfully <a href='./student/watchcourse.php?price=" . $row['price'] . "&id=" . $row['course_id'] . "'>Watch Now</a></b>";
                             else
                                 $info = "<b class='text-danger'>An error occured :(</b>";
                         }
@@ -124,6 +120,7 @@ else
             $id = $_GET['id'];
             if (is_numeric($id)) {
                 $result = $conn->query("SELECT * FROM course WHERE course_id=$id");
+                $result2 = $conn->query("SELECT * FROM student WHERE stu_id=$id");
                 if ($result->num_rows == 1) {
                     $row = $result->fetch_assoc();
                     echo "<img src='./images/course_img/{$row['course_img']}' alt='course_img'>
@@ -132,8 +129,8 @@ else
                             <p>{$row['course_desc']}</p>
                             <p>Duration: {$row['course_dur']}</p>
                             <p>Author: {$row['course_author']}</p>
-                            <p>Price: {$row['price']}</p>
-                            <p  class='text-danger'>ডেমো/ওডার এর জন্য Enroll Now এ ক্লিক করুন!</p>
+                            <p>Price: {$row['price']} taka 😲</p>
+                            <p  class='text-danger'>ডেমো এর জন্য Enroll Now এ ক্লিক করুন!</p>
                             <a href='?id={$row['course_id']}&enroll={$row['course_id']}' class='btn btn-primary'>Enroll Now</a><br>
                             {$info}
                         </div>";
@@ -142,17 +139,17 @@ else
             } else
                 $err = "<span class='text-danger'>COURSE NOT FOUND !</span>";
 
-            if (isset($err))
-            {
+            if (isset($err)) {
                 echo $err;
                 goto footer;
             }
-            
+
             ?>
-    <a class="btn btn-primary" href="checkout.php?price=<?php echo $row['price']; ?>">checkout</a>
-        <?php
-        $row = $result->fetch_assoc();
-        ?>
+            <a class="btn btn-danger"
+                href="checkout.php?price=<?php echo $row['price']; ?>&id=<?php echo $row['course_id']; ?>">Buy Now</a>
+            <?php
+            $row = $result->fetch_assoc();
+            ?>
         </div>
         <div class="l_detail">
 
@@ -179,9 +176,10 @@ else
             </table>
         </div>
     </section>
-<?php 
-footer: ;
-?>
+    <?php
+    footer:
+    ;
+    ?>
 
     <div id="modal">
         <div id="modal_content">
